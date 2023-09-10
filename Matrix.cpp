@@ -5,21 +5,6 @@
 
 using namespace std;
 
-int getCharNumberOccurrence(char *input, char character)
-{
-    int numberOccurrence = 0;
-
-    while(*input != '\0')
-    {
-        if (*input == character)
-            numberOccurrence++;
-
-        input++;
-    }
-
-    return numberOccurrence;
-}
-
 void Matrix::Minus(Matrix anotherMatrix)
 {
 
@@ -77,33 +62,13 @@ void Matrix::GenerateMatrix()
 
             cout << "Insert element [" << i <<","<< j << "] :" << endl;
             cin >> value;
-            elements[count] = value;
+            *(elements + count) = &value;
             count++;
         }
     }
 }
 
-Matrix::Matrix(){}
+// Matrix::Matrix(){}
 
-Matrix::Matrix(char *input)
-{
-    int splitCharNumberOccurrence = getCharNumberOccurrence(input, ';');
 
-    int qtdRows = splitCharNumberOccurrence + 1;
-    int qtdCols = (strlen(input) - splitCharNumberOccurrence)/qtdRows;
 
-    std::cout << "Qtd rows: " << qtdRows << std::endl;
-    std::cout << "Qtd columns: " << qtdCols << std::endl;
-
-    for (int i = 0; i < qtdRows * qtdCols; ++i)
-    {
-        AddElement(&input[i], i);
-    }
-}
-
-void Matrix::AddElement(char* element, int index)
-{
-    std::string fs(element);
-    float f=std::stof(fs);
-    elements[index] = f;
-}
