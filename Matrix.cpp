@@ -10,9 +10,17 @@ void Matrix::Minus(Matrix anotherMatrix)
 
 }
 
-void Matrix::Plus(Matrix anotherMatrix)
+void Matrix::Plus(Matrix *anotherMatrix)
 {
+    for (size_t i = 0; i < numberOfRows; i++)
+    {
+        for (size_t j = 0; j < numberOfColumns; j++)
+        {
+            float value = *(*anotherMatrix->elements + j);
 
+            //*(elements + j) = 1 + value;
+        }        
+    } 
 }
 
 void Matrix::Times(float scalarElement)

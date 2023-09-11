@@ -12,10 +12,17 @@ int main()
     cin >> firstMatrix->numberOfRows;
     cout << "Insert the number of columns: " << endl;
     cin >> firstMatrix->numberOfColumns;
-
+    
     firstMatrix->GenerateMatrix();
 
-    delete firstMatrix;
+    Matrix *secondMatrix = new Matrix();
+    cout << "Second Matrix: " << endl;
+    cout << "Insert the number of rows: " << endl;
+    cin >> firstMatrix->numberOfRows;
+    cout << "Insert the number of columns: " << endl;
+    cin >> firstMatrix->numberOfColumns;
+    
+    firstMatrix->Plus(secondMatrix);
 
     system("pause");
 
