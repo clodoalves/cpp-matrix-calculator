@@ -6,7 +6,6 @@ using namespace std;
 int main()
 {
     Matrix *firstMatrix = new Matrix();
-
     cout << "First Matrix: " << endl;
     cout << "Insert the number of rows: " << endl;
     cin >> firstMatrix->numberOfRows;
@@ -18,10 +17,12 @@ int main()
     Matrix *secondMatrix = new Matrix();
     cout << "Second Matrix: " << endl;
     cout << "Insert the number of rows: " << endl;
-    cin >> firstMatrix->numberOfRows;
+    cin >> secondMatrix->numberOfRows;
     cout << "Insert the number of columns: " << endl;
-    cin >> firstMatrix->numberOfColumns;
+    cin >> secondMatrix->numberOfColumns;
     
+    secondMatrix->GenerateMatrix();
+
     firstMatrix->Plus(secondMatrix);
 
     system("pause");

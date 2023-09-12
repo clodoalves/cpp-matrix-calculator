@@ -60,23 +60,20 @@ void Matrix::Print()
 
 void Matrix::GenerateMatrix()
 {
-    int count = 0;
-
-    for (int i = 1; i <= numberOfRows; i++)
-    {
-        for (int j = 1; j <= numberOfColumns; j++)
+    for (int i = 0; i < numberOfRows; i++)
+    {   
+        for (int j = 0; j < numberOfColumns; j++)
         {
+            float *line = elements[i];
+            line = new float();
             float value;
-
-            cout << "Insert element [" << i <<","<< j << "] :" << endl;
+            cout << "Insert element [" << i + 1 <<","<< j + 1  << "] :" << endl;
             cin >> value;
-            *(elements + count) = &value;
-            count++;
+            *(line + j) = value;
+
+            //*(elements + j) = &value;
         }
     }
 }
 
 // Matrix::Matrix(){}
-
-
-
