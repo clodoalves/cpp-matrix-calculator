@@ -1,12 +1,11 @@
-const size_t N = 20;
+const size_t MAXIMUM_DIMENSION = 20;
 
 class Matrix {
 
 public:
-    float** elements = new float* [N];
+    float** elements = new float* [MAXIMUM_DIMENSION];
     size_t numberOfRows;
     size_t numberOfColumns;
-    // Matrix ();
     void Plus(Matrix *anotherMatrix);
     void Minus(Matrix anotherMatrix);
     void Times(float scalarElement);

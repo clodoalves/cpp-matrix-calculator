@@ -24,6 +24,8 @@ int main()
     secondMatrix->GenerateMatrix();
 
     firstMatrix->Plus(secondMatrix);
+    
+    firstMatrix->Print();
 
     system("pause");
 

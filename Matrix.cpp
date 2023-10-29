@@ -11,15 +11,16 @@ void Matrix::Minus(Matrix anotherMatrix)
 
 void Matrix::Plus(Matrix* anotherMatrix)
 {
-    // for (size_t i = 0; i < numberOfRows; i++)
-    // {
-    //     for (size_t j = 0; j < numberOfColumns; j++)
-    //     {
-    //         float value = *(*anotherMatrix->elements + j);
-
-    //         //*(elements + j) = 1 + value;
-    //     }        
-    // } 
+    for (size_t i = 0; i < numberOfRows; i++)
+    {
+        for (size_t j = 0; j < numberOfColumns; j++)
+        {
+            float valueFirstMatrix = elements[i][j]; 
+            float valueSecondMatrix = anotherMatrix->elements[i][j];
+         
+            elements[i][j] = valueFirstMatrix + valueSecondMatrix;
+        }        
+    } 
 }
 
 void Matrix::Times(float scalarElement)
@@ -54,7 +55,13 @@ Matrix Matrix::GetTransposeMatrix()
 
 void Matrix::Print()
 {
-
+    for (size_t i = 0; i < numberOfRows; i++)
+    {
+        for (size_t j = 0; j < numberOfColumns; j++)
+        {
+            cout << "Element"<<"[" << i << "]" << "[" << j << "]" << "-> " << elements[i][j] << endl; 
+        }        
+    }
 }
 
 void Matrix::GenerateMatrix()
@@ -63,20 +70,12 @@ void Matrix::GenerateMatrix()
     {
         elements[i] = new float[numberOfColumns];
 
-        for (size_t j = 0; j < numberOfColumns; i++)
+        for (size_t j = 0; j < numberOfColumns; j++)
         {
             float element;
-            cout << "Insert "<<"[" << i << "]" << "[" << j  << "]" << "element: ";
+            cout << "Insert element "<<"[" << i + 1 << "]" << "[" << j + 1  << "]" << endl;
             cin >> element;
             elements[i][j] = element;
         } 
     }
 }
-
-// Matrix::Matrix()
-// {
-//     for (size_t i = 0; i < N; i++)
-//     {
-//         elements[i] = new float[N];
-//     }
-// }
