@@ -9,7 +9,7 @@ void Matrix::Minus(Matrix anotherMatrix)
 
 }
 
-void Matrix::Plus(Matrix *anotherMatrix)
+void Matrix::Plus(Matrix* anotherMatrix)
 {
     // for (size_t i = 0; i < numberOfRows; i++)
     // {
@@ -39,17 +39,17 @@ void Matrix::Times(Matrix anotherMatrix)
 
 int Matrix::isIdentityMatrix()
 {
-    return 0;
+	return 0;
 }
 
 Matrix Matrix::GetInverseMatrix()
 {
-    return Matrix();
+	return Matrix();
 }
 
 Matrix Matrix::GetTransposeMatrix()
 {
-    return Matrix();
+	return Matrix();
 }
 
 void Matrix::Print()
