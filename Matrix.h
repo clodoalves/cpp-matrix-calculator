@@ -1,12 +1,11 @@
+const size_t N = 20;
 
 class Matrix {
-// private:
-//     float *elements[50];
 
 public:
-    float *elements[50];
-    int numberOfRows;
-    int numberOfColumns;
+    float** elements = new float* [N];
+    size_t numberOfRows;
+    size_t numberOfColumns;
     // Matrix ();
     void Plus(Matrix *anotherMatrix);
     void Minus(Matrix anotherMatrix);

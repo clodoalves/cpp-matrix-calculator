@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include "Matrix.h"
 #include "string.h"
@@ -12,15 +11,15 @@ void Matrix::Minus(Matrix anotherMatrix)
 
 void Matrix::Plus(Matrix *anotherMatrix)
 {
-    for (size_t i = 0; i < numberOfRows; i++)
-    {
-        for (size_t j = 0; j < numberOfColumns; j++)
-        {
-            float value = *(*anotherMatrix->elements + j);
+    // for (size_t i = 0; i < numberOfRows; i++)
+    // {
+    //     for (size_t j = 0; j < numberOfColumns; j++)
+    //     {
+    //         float value = *(*anotherMatrix->elements + j);
 
-            //*(elements + j) = 1 + value;
-        }        
-    } 
+    //         //*(elements + j) = 1 + value;
+    //     }        
+    // } 
 }
 
 void Matrix::Times(float scalarElement)
@@ -60,20 +59,24 @@ void Matrix::Print()
 
 void Matrix::GenerateMatrix()
 {
-    for (int i = 0; i < numberOfRows; i++)
-    {   
-        for (int j = 0; j < numberOfColumns; j++)
-        {
-            float *line = elements[i];
-            line = new float();
-            float value;
-            cout << "Insert element [" << i + 1 <<","<< j + 1  << "] :" << endl;
-            cin >> value;
-            *(line + j) = value;
+    for (size_t i = 0; i < numberOfRows; i++)
+    {
+        elements[i] = new float[numberOfColumns];
 
-            //*(elements + j) = &value;
-        }
+        for (size_t j = 0; j < numberOfColumns; i++)
+        {
+            float element;
+            cout << "Insert "<<"[" << i << "]" << "[" << j  << "]" << "element: ";
+            cin >> element;
+            elements[i][j] = element;
+        } 
     }
 }
 
-// Matrix::Matrix(){}
+// Matrix::Matrix()
+// {
+//     for (size_t i = 0; i < N; i++)
+//     {
+//         elements[i] = new float[N];
+//     }
+// }
