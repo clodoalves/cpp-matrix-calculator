@@ -23,7 +23,7 @@ int main()
     
     secondMatrix->GenerateMatrix();
 
-    firstMatrix->Plus(secondMatrix);
+    firstMatrix->Minus(secondMatrix);
     
     firstMatrix->Print();
 

@@ -4,9 +4,18 @@
 
 using namespace std;
 
-void Matrix::Minus(Matrix anotherMatrix)
+void Matrix::Minus(Matrix* anotherMatrix)
 {
+    for (size_t i = 0; i < numberOfRows; i++)
+    {
+        for (size_t j = 0; j < numberOfColumns; j++)
+        {
+            float valueFirstMatrix = elements[i][j];
+            float valueSecondMatrix = anotherMatrix->elements[i][j];
 
+            elements[i][j] = valueFirstMatrix - valueSecondMatrix;
+        }        
+    }
 }
 
 void Matrix::Plus(Matrix* anotherMatrix)
