@@ -34,17 +34,29 @@ void Matrix::Plus(Matrix* anotherMatrix)
 
 void Matrix::Times(float scalarElement)
 {
-
+    for (size_t i = 0; i < numberOfRows; i++)
+    {
+        for (size_t j = 0; j < numberOfColumns; j++)
+        {
+            elements[i][j] *= scalarElement;
+        } 
+    } 
 }
 
 void Matrix::DividedBy(float scalarElement)
-{
-
+{    
+    for (size_t i = 0; i < numberOfRows; i++)
+    {
+        for (size_t j = 0; j < numberOfColumns; j++)
+        {
+            elements[i][j] /= scalarElement;
+        } 
+    } 
 }
 
 void Matrix::Times(Matrix anotherMatrix)
 {
-
+       
 }
 
 int Matrix::isIdentityMatrix()

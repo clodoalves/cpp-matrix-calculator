@@ -14,17 +14,19 @@ int main()
     
     firstMatrix->GenerateMatrix();
 
-    Matrix *secondMatrix = new Matrix();
-    cout << "Second Matrix: " << endl;
-    cout << "Insert the number of rows: " << endl;
-    cin >> secondMatrix->numberOfRows;
-    cout << "Insert the number of columns: " << endl;
-    cin >> secondMatrix->numberOfColumns;
+    // Matrix *secondMatrix = new Matrix();
+    // cout << "Second Matrix: " << endl;
+    // cout << "Insert the number of rows: " << endl;
+    // cin >> secondMatrix->numberOfRows;
+    // cout << "Insert the number of columns: " << endl;
+    // cin >> secondMatrix->numberOfColumns;
     
-    secondMatrix->GenerateMatrix();
+    // secondMatrix->GenerateMatrix();
 
-    firstMatrix->Minus(secondMatrix);
+    // firstMatrix->Minus(secondMatrix);
     
+    firstMatrix->DividedBy(10);
+
     firstMatrix->Print();
 
     system("pause");
