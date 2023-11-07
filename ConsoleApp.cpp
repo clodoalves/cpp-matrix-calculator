@@ -5,7 +5,7 @@ using namespace std;
 
 int main()
 {
-    Matrix *firstMatrix = new Matrix();
+    Matrix* firstMatrix = new Matrix();
     cout << "First Matrix: " << endl;
     cout << "Insert the number of rows: " << endl;
     cin >> firstMatrix->numberOfRows;
@@ -14,20 +14,18 @@ int main()
     
     firstMatrix->GenerateMatrix();
 
-    // Matrix *secondMatrix = new Matrix();
-    // cout << "Second Matrix: " << endl;
-    // cout << "Insert the number of rows: " << endl;
-    // cin >> secondMatrix->numberOfRows;
-    // cout << "Insert the number of columns: " << endl;
-    // cin >> secondMatrix->numberOfColumns;
+    Matrix* secondMatrix = new Matrix();
+    cout << "Second Matrix: " << endl;
+    cout << "Insert the number of rows: " << endl;
+    cin >> secondMatrix->numberOfRows;
+    cout << "Insert the number of columns: " << endl;
+    cin >> secondMatrix->numberOfColumns;
     
-    // secondMatrix->GenerateMatrix();
-
-    // firstMatrix->Minus(secondMatrix);
+    secondMatrix->GenerateMatrix();
     
-    firstMatrix->DividedBy(10);
+    Matrix* newMatrix = firstMatrix->Times(secondMatrix);
 
-    firstMatrix->Print();
+    newMatrix->Print();
 
     system("pause");
 

@@ -6,14 +6,15 @@ public:
     float** elements = new float* [MAXIMUM_DIMENSION];
     size_t numberOfRows;
     size_t numberOfColumns;
-    void Plus(Matrix* anotherMatrix);
-    void Minus(Matrix* anotherMatrix);
+    void Plus(Matrix* secondMatrix);
+    void Minus(Matrix* secondMatrix);
     void Times(float scalarElement);
-    void Times(Matrix anotherMatrix);
+    Matrix* Times(Matrix* secondMatrix);
     void DividedBy(float scalarElement);
     int isIdentityMatrix();
     Matrix GetInverseMatrix();
     Matrix GetTransposeMatrix();
     void Print();
     void GenerateMatrix();
+    void AddColumnValues(float column [], size_t indexColumn);
 };
