@@ -11,7 +11,7 @@ public:
     void Times(float scalarElement);
     Matrix* Times(Matrix* secondMatrix);
     void DividedBy(float scalarElement);
-    int isIdentityMatrix();
+    int IsIdentityMatrix();
     Matrix GetInverseMatrix();
     Matrix GetTransposeMatrix();
     void Print();

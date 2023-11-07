@@ -113,7 +113,7 @@ void Matrix::AddColumnValues(float column [], size_t indexLine)
     }
 }
 
-int Matrix::isIdentityMatrix()
+int Matrix::IsIdentityMatrix()
 {
     return 0;
 }
