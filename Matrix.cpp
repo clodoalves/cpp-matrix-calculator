@@ -1,11 +1,9 @@
-#include <iostream>
 #include "Matrix.h"
-#include "string.h"
 
-using namespace std;
-
-void Matrix::Minus(Matrix* secondMatrix)
+void Matrix::Minus(Matrix *secondMatrix)
 {
+    ValidSubtraction(secondMatrix);
+
     for (size_t i = 0; i < numberOfRows; i++)
     {
         for (size_t j = 0; j < numberOfColumns; j++)
@@ -18,8 +16,10 @@ void Matrix::Minus(Matrix* secondMatrix)
     }
 }
 
-void Matrix::Plus(Matrix* secondMatrix)
+void Matrix::Plus(Matrix *secondMatrix)
 {
+    ValidateSum(secondMatrix);
+
     for (size_t i = 0; i < numberOfRows; i++)
     {
         for (size_t j = 0; j < numberOfColumns; j++)
@@ -54,16 +54,11 @@ void Matrix::DividedBy(float scalarElement)
     }
 }
 
-Matrix* Matrix::Times(Matrix* secondMatrix)
+Matrix *Matrix::Times(Matrix* secondMatrix)
 {
-    Matrix* newMatrix = nullptr;
+    ValidateMultiplication(secondMatrix);
 
-    if (numberOfRows != secondMatrix->numberOfColumns)
-    {
-        cout << "Invalid for matrix multiplication" << endl;
-
-        return newMatrix;
-    }
+    Matrix *newMatrix = nullptr;
 
     newMatrix = new Matrix();
 
@@ -78,7 +73,7 @@ Matrix* Matrix::Times(Matrix* secondMatrix)
         float elementFirstMatrix = 0;
         float elementSecondMatrix = 0;
         float elementNewMatrix = 0;
-        size_t indexRowSecondMatrix = 0; 
+        size_t indexRowSecondMatrix = 0;
 
         for (size_t indexColumnFirstMatrix = 0; indexColumnFirstMatrix < numberOfColumns; indexColumnFirstMatrix++)
         {
@@ -92,21 +87,21 @@ Matrix* Matrix::Times(Matrix* secondMatrix)
             }
 
             indexRowSecondMatrix++;
-        } 
-        
+        }
+
         newMatrix->AddColumnValues(newLine, indexRowNewMatrix);
-        std::fill(newLine, newLine + indexRowSecondMatrix, 0); 
-       
+        std::fill(newLine, newLine + indexRowSecondMatrix, 0);
+
         indexRowNewMatrix++;
     }
 
     return newMatrix;
 }
 
-void Matrix::AddColumnValues(float column [], size_t indexLine)
+void Matrix::AddColumnValues(float column[], size_t indexLine)
 {
     elements[indexLine] = new float[numberOfColumns];
-     
+
     for (size_t i = 0; i < numberOfColumns; i++)
     {
         elements[indexLine][i] = column[i];
@@ -157,5 +152,35 @@ void Matrix::GenerateMatrix()
             cin >> element;
             elements[i][j] = element;
         }
+    }
+}
+
+void Matrix::ValidateSum(Matrix *secondMatrix)
+{
+    if (HasSameDimensionOf(secondMatrix))
+    {
+        throw ArithmeticException("To sum two matrices, their dimensions must be the same");
+    }
+}
+
+void Matrix::ValidSubtraction(Matrix *secondMatrix)
+{
+    if (HasSameDimensionOf(secondMatrix))
+    {
+        throw ArithmeticException("To subtract two matrices, their dimensions must be the same");
+    }
+}
+
+bool Matrix::HasSameDimensionOf(Matrix *secondMatrix)
+{
+    return (numberOfColumns != secondMatrix->numberOfColumns) ||
+           (numberOfRows != secondMatrix->numberOfRows);
+}
+
+void Matrix::ValidateMultiplication(Matrix *secondMatrix)
+{
+    if (numberOfRows != secondMatrix->numberOfColumns)
+    {
+        throw ArithmeticException("Invalid for matrix multiplication");
     }
 }
