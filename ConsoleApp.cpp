@@ -25,7 +25,9 @@ int main()
 
         secondMatrix->GenerateMatrix();
 
-        firstMatrix->Plus(secondMatrix);   
+        firstMatrix->Plus(secondMatrix);  
+
+        firstMatrix->Print(); 
     }
     catch(ArithmeticException ex)
     {

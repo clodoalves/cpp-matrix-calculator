@@ -1,21 +1,5 @@
 #include "Matrix.h"
 
-void Matrix::Minus(Matrix *secondMatrix)
-{
-    ValidSubtraction(secondMatrix);
-
-    for (size_t i = 0; i < numberOfRows; i++)
-    {
-        for (size_t j = 0; j < numberOfColumns; j++)
-        {
-            float valueFirstMatrix = elements[i][j];
-            float valueSecondMatrix = secondMatrix->elements[i][j];
-
-            elements[i][j] = valueFirstMatrix - valueSecondMatrix;
-        }
-    }
-}
-
 void Matrix::Plus(Matrix *secondMatrix)
 {
     ValidateSum(secondMatrix);
@@ -32,6 +16,22 @@ void Matrix::Plus(Matrix *secondMatrix)
     }
 }
 
+void Matrix::Minus(Matrix *secondMatrix)
+{
+    ValidateSubtraction(secondMatrix);
+
+    for (size_t i = 0; i < numberOfRows; i++)
+    {
+        for (size_t j = 0; j < numberOfColumns; j++)
+        {
+            float valueFirstMatrix = elements[i][j];
+            float valueSecondMatrix = secondMatrix->elements[i][j];
+
+            elements[i][j] = valueFirstMatrix - valueSecondMatrix;
+        }
+    }
+}
+
 void Matrix::Times(float scalarElement)
 {
     for (size_t i = 0; i < numberOfRows; i++)
@@ -39,17 +39,6 @@ void Matrix::Times(float scalarElement)
         for (size_t j = 0; j < numberOfColumns; j++)
         {
             elements[i][j] *= scalarElement;
-        }
-    }
-}
-
-void Matrix::DividedBy(float scalarElement)
-{
-    for (size_t i = 0; i < numberOfRows; i++)
-    {
-        for (size_t j = 0; j < numberOfColumns; j++)
-        {
-            elements[i][j] /= scalarElement;
         }
     }
 }
@@ -98,6 +87,22 @@ Matrix *Matrix::Times(Matrix* secondMatrix)
     return newMatrix;
 }
 
+void Matrix::DividedBy(float scalarElement)
+{
+    for (size_t i = 0; i < numberOfRows; i++)
+    {
+        for (size_t j = 0; j < numberOfColumns; j++)
+        {
+            elements[i][j] /= scalarElement;
+        }
+    }
+}
+
+int Matrix::IsIdentityMatrix()
+{
+    return 0;
+}
+
 void Matrix::AddColumnValues(float column[], size_t indexLine)
 {
     elements[indexLine] = new float[numberOfColumns];
@@ -106,11 +111,6 @@ void Matrix::AddColumnValues(float column[], size_t indexLine)
     {
         elements[indexLine][i] = column[i];
     }
-}
-
-int Matrix::IsIdentityMatrix()
-{
-    return 0;
 }
 
 Matrix Matrix::GetInverseMatrix()
@@ -157,15 +157,15 @@ void Matrix::GenerateMatrix()
 
 void Matrix::ValidateSum(Matrix *secondMatrix)
 {
-    if (HasSameDimensionOf(secondMatrix))
+    if (!HasSameDimensionOf(secondMatrix))
     {
         throw ArithmeticException("To sum two matrices, their dimensions must be the same");
     }
 }
 
-void Matrix::ValidSubtraction(Matrix *secondMatrix)
+void Matrix::ValidateSubtraction(Matrix *secondMatrix)
 {
-    if (HasSameDimensionOf(secondMatrix))
+    if (!HasSameDimensionOf(secondMatrix))
     {
         throw ArithmeticException("To subtract two matrices, their dimensions must be the same");
     }
@@ -173,8 +173,8 @@ void Matrix::ValidSubtraction(Matrix *secondMatrix)
 
 bool Matrix::HasSameDimensionOf(Matrix *secondMatrix)
 {
-    return (numberOfColumns != secondMatrix->numberOfColumns) ||
-           (numberOfRows != secondMatrix->numberOfRows);
+    return (numberOfColumns == secondMatrix->numberOfColumns) &&
+           (numberOfRows == secondMatrix->numberOfRows);
 }
 
 void Matrix::ValidateMultiplication(Matrix *secondMatrix)

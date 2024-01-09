@@ -26,7 +26,7 @@ public:
 private:
     void AddColumnValues(float column [], size_t indexColumn);
     void ValidateSum(Matrix* secondMatrix);
-    void ValidSubtraction(Matrix* secondMatrix);
+    void ValidateSubtraction(Matrix* secondMatrix);
     void ValidateMultiplication(Matrix* secondMatrix);
     bool HasSameDimensionOf(Matrix* secondMatrix);
 };
