@@ -130,8 +130,8 @@ void Matrix::Print()
         for (size_t j = 0; j < numberOfColumns; j++)
         {
             cout << "Element"
-                 << "[" << i << "]"
-                 << "[" << j << "]"
+                 << "[" << i + 1 << "]"
+                 << "[" << j + 1 << "]"
                  << "-> " << elements[i][j] << endl;
         }
     }
@@ -179,7 +179,7 @@ bool Matrix::HasSameDimensionOf(Matrix *secondMatrix)
 
 void Matrix::ValidateMultiplication(Matrix *secondMatrix)
 {
-    if (numberOfRows != secondMatrix->numberOfColumns)
+    if (numberOfColumns != secondMatrix->numberOfRows)
     {
         throw ArithmeticException("Invalid for matrix multiplication");
     }
