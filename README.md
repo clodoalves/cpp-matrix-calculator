@@ -13,6 +13,6 @@ So far, theses following matrix operations are implemented:
 - Division of a matrix by a scalar element
 
 ## Future steps:
-- Implementation of the transpose matrix
+- Implementation of the transpose of a matrix
 - Implementation of a desktop GUI
 - Implementation of unit tests
