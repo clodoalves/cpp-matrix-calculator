@@ -2,9 +2,9 @@
 
 Hey there!
 
-This is a simple study repo with some matrix arithmetic operations using C++
+This is a simple study repo with some matrix operations using C++
 
-So far, theses following matrix operations are implemented: 
+So far, these operations are implemented: 
 
 - Sum of two matrix
 - Subtration of two matrix
