@@ -16,7 +16,8 @@ int main()
 
         firstMatrix->GenerateMatrix();
 
-        Matrix *secondMatrix = new Matrix();
+        Matrix *secondMatrix = new Matrix;
+
         cout << "Second Matrix: " << endl;
         cout << "Insert the number of rows: " << endl;
         cin >> secondMatrix->numberOfRows;
@@ -25,7 +26,7 @@ int main()
 
         secondMatrix->GenerateMatrix();
 
-        auto newMatrix = firstMatrix->Times(secondMatrix);  
+        Matrix *newMatrix = firstMatrix->Times(secondMatrix);  
 
         newMatrix->Print(); 
     }

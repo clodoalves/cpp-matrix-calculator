@@ -1,8 +1,7 @@
 #include <iostream>
 #include "string.h"
 #include "CustomException.cpp"
-
-using namespace std;
+#include "vector" 
 
 const size_t MAXIMUM_DIMENSION = 20;
 
@@ -24,7 +23,7 @@ public:
     void GenerateMatrix();
 
 private:
-    void AddColumnValues(float column [], size_t indexColumn);
+    void AddNewRow(std::vector<float> vec, size_t indexColumn);
     void ValidateSum(Matrix* secondMatrix);
     void ValidateSubtraction(Matrix* secondMatrix);
     void ValidateMultiplication(Matrix* secondMatrix);

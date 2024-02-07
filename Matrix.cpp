@@ -43,45 +43,43 @@ void Matrix::Times(float scalarElement)
     }
 }
 
-Matrix *Matrix::Times(Matrix* secondMatrix)
+Matrix *Matrix::Times(Matrix *secondMatrix)
 {
     ValidateMultiplication(secondMatrix);
 
     Matrix *newMatrix = nullptr;
 
     newMatrix = new Matrix();
-
     newMatrix->numberOfRows = numberOfRows;
     newMatrix->numberOfColumns = secondMatrix->numberOfColumns;
 
-    size_t indexRowNewMatrix = 0;
-    float newLine[newMatrix->numberOfRows];
-
     for (size_t indexRowFirstMatrix = 0; indexRowFirstMatrix < numberOfRows; indexRowFirstMatrix++)
     {
-        float elementFirstMatrix = 0;
-        float elementSecondMatrix = 0;
-        float elementNewMatrix = 0;
+        std::vector<float> newLine;
         size_t indexRowSecondMatrix = 0;
 
         for (size_t indexColumnFirstMatrix = 0; indexColumnFirstMatrix < numberOfColumns; indexColumnFirstMatrix++)
         {
-            elementFirstMatrix = elements[indexRowFirstMatrix][indexColumnFirstMatrix];
+            float elementFirstMatrix = elements[indexRowFirstMatrix][indexColumnFirstMatrix];
 
             for (size_t indexColumnSecondMatrix = 0; indexColumnSecondMatrix < secondMatrix->numberOfColumns; indexColumnSecondMatrix++)
             {
-                elementSecondMatrix = secondMatrix->elements[indexRowSecondMatrix][indexColumnSecondMatrix];
-                float sum = elementFirstMatrix * elementSecondMatrix;
-                newLine[indexColumnSecondMatrix] = newLine[indexColumnSecondMatrix] + sum;
-            }
+                float elementSecondMatrix = secondMatrix->elements[indexColumnFirstMatrix][indexColumnSecondMatrix];
 
-            indexRowSecondMatrix++;
+                float multiplication = elementFirstMatrix * elementSecondMatrix;
+
+                if (indexColumnSecondMatrix < newLine.size())
+                {
+                    newLine.at(indexColumnSecondMatrix) += multiplication;
+                }
+                else
+                {
+                    newLine.push_back(multiplication);
+                }
+            }
         }
 
-        newMatrix->AddColumnValues(newLine, indexRowNewMatrix);
-        std::fill(newLine, newLine + indexRowSecondMatrix, 0);
-
-        indexRowNewMatrix++;
+        newMatrix->AddNewRow(newLine, indexRowFirstMatrix);
     }
 
     return newMatrix;
@@ -103,7 +101,7 @@ int Matrix::IsIdentityMatrix()
     return 0;
 }
 
-void Matrix::AddColumnValues(float column[], size_t indexLine)
+void Matrix::AddNewRow(std::vector<float> column, size_t indexLine)
 {
     elements[indexLine] = new float[numberOfColumns];
 
