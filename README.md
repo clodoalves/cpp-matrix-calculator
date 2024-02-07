@@ -12,7 +12,7 @@ So far, theses following matrix operations are implemented:
 - Multiplication between two matrix
 - Division of a matrix by a scalar element
 
-## Future steps:
-- Implementation of the transpose of a matrix
-- Implementation of a desktop GUI
-- Implementation of unit tests
+## Future implementations:
+- Transpose of a matrix
+- Desktop GUI
+- Unit tests
