@@ -11,8 +11,8 @@ So far, these operations are implemented:
 - Multiplication of a matrix by a scalar element
 - Multiplication between two matrix
 - Division of a matrix by a scalar element
+- Transpose of a matrix
 
 ## Future implementations:
-- Transpose of a matrix
 - Desktop GUI
 - Unit tests
