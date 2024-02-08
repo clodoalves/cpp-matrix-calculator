@@ -18,9 +18,9 @@ public:
     void DividedBy(float scalarElement);
     int IsIdentityMatrix();
     Matrix GetInverseMatrix();
-    Matrix GetTransposeMatrix();
+    Matrix* GetTransposeMatrix();
     void Print();
-    void GenerateMatrix();
+    void GenerateMatrix(bool defaultValue = false);
 
 private:
     void AddNewRow(std::vector<float> vec, size_t indexColumn);

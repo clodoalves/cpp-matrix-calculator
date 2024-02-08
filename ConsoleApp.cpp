@@ -16,19 +16,9 @@ int main()
 
         firstMatrix->GenerateMatrix();
 
-        Matrix *secondMatrix = new Matrix;
+        auto newMatrix = firstMatrix->GetTransposeMatrix();
 
-        cout << "Second Matrix: " << endl;
-        cout << "Insert the number of rows: " << endl;
-        cin >> secondMatrix->numberOfRows;
-        cout << "Insert the number of columns: " << endl;
-        cin >> secondMatrix->numberOfColumns;
-
-        secondMatrix->GenerateMatrix();
-
-        Matrix *newMatrix = firstMatrix->Times(secondMatrix);  
-
-        newMatrix->Print(); 
+        newMatrix->Print();        
     }
     catch(ArithmeticException ex)
     {

@@ -116,9 +116,25 @@ Matrix Matrix::GetInverseMatrix()
     return Matrix();
 }
 
-Matrix Matrix::GetTransposeMatrix()
+Matrix *Matrix::GetTransposeMatrix()
 {
-    return Matrix();
+    Matrix *newMatrix = new Matrix();
+    newMatrix->numberOfRows = numberOfColumns;
+    newMatrix->numberOfColumns = numberOfRows;
+    bool fillZeroValues = true;
+    newMatrix->GenerateMatrix(fillZeroValues);
+    
+    for (size_t indexRowMatrix = 0; indexRowMatrix < numberOfRows; indexRowMatrix++)
+    {
+       for (size_t indexColumnMatrix = 0; indexColumnMatrix < numberOfColumns; indexColumnMatrix++)
+       {
+            float selectedElement = elements[indexRowMatrix][indexColumnMatrix];
+
+            newMatrix->elements[indexColumnMatrix][indexRowMatrix] = selectedElement;
+       }
+    }
+
+    return newMatrix;
 }
 
 void Matrix::Print()
@@ -135,7 +151,7 @@ void Matrix::Print()
     }
 }
 
-void Matrix::GenerateMatrix()
+void Matrix::GenerateMatrix(bool defaultValue)
 {
     for (size_t i = 0; i < numberOfRows; i++)
     {
@@ -144,11 +160,18 @@ void Matrix::GenerateMatrix()
         for (size_t j = 0; j < numberOfColumns; j++)
         {
             float element;
-            cout << "Insert element "
+            if (defaultValue)
+            {
+                elements[i][j] = 0;
+            }
+            else
+            {
+                cout << "Insert element "
                  << "[" << i + 1 << "]"
                  << "[" << j + 1 << "]" << endl;
-            cin >> element;
-            elements[i][j] = element;
+                cin >> element;
+                elements[i][j] = element;
+            }
         }
     }
 }
