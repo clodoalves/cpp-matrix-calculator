@@ -13,6 +13,3 @@ So far, these operations are implemented:
 - Division of a matrix by a scalar element
 - Transpose of a matrix
 
-## Future implementations:
-- Desktop GUI
-- Unit tests
