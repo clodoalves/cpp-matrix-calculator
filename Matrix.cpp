@@ -2,6 +2,8 @@
 
 void Matrix::Plus(Matrix *secondMatrix)
 {
+    cout << "Executing addition of matrices..." << endl;
+
     ValidateSum(secondMatrix);
 
     for (size_t i = 0; i < numberOfRows; i++)
@@ -18,6 +20,8 @@ void Matrix::Plus(Matrix *secondMatrix)
 
 void Matrix::Minus(Matrix *secondMatrix)
 {
+    cout << "Executing subtraction of matrices..." <<endl;
+
     ValidateSubtraction(secondMatrix);
 
     for (size_t i = 0; i < numberOfRows; i++)
@@ -34,6 +38,8 @@ void Matrix::Minus(Matrix *secondMatrix)
 
 void Matrix::Times(float scalarElement)
 {
+    cout << "Executing scalar multiplication of matrices..." <<endl;
+
     for (size_t i = 0; i < numberOfRows; i++)
     {
         for (size_t j = 0; j < numberOfColumns; j++)
@@ -45,6 +51,8 @@ void Matrix::Times(float scalarElement)
 
 Matrix *Matrix::Times(Matrix *secondMatrix)
 {
+    cout << "Executing multiplication of matrices..." <<endl;
+
     ValidateMultiplication(secondMatrix);
 
     Matrix *newMatrix = nullptr;
@@ -83,17 +91,6 @@ Matrix *Matrix::Times(Matrix *secondMatrix)
     }
 
     return newMatrix;
-}
-
-void Matrix::DividedBy(float scalarElement)
-{
-    for (size_t i = 0; i < numberOfRows; i++)
-    {
-        for (size_t j = 0; j < numberOfColumns; j++)
-        {
-            elements[i][j] /= scalarElement;
-        }
-    }
 }
 
 int Matrix::IsIdentityMatrix()
@@ -174,13 +171,44 @@ void Matrix::GenerateMatrix(bool defaultValue)
             }
         }
     }
+
+    cout << endl;
+
+    cout << "Matrix dimensions: "+ to_string(numberOfRows) + " X " + to_string(numberOfColumns)<< endl;;
+}
+
+void Matrix::SetMatrixDimensions()
+{
+    cout << "Insert the number of rows: " << endl;
+    cin >> numberOfRows;
+    cout << "Insert the number of columns: " << endl;
+    cin >> numberOfColumns;
+    
+    GenerateMatrix();  
+    DisplayMatrix();
+
+    cout << endl;
+}
+
+void Matrix::DisplayMatrix()
+{
+    for (size_t i = 0; i < numberOfRows; i++ )
+    {
+        for (size_t j = 0; j < numberOfColumns; j++)
+        {
+            float value = elements[i][j];        
+            cout << std::setfill(' ') << setw(4) << value;            
+        }        
+
+        cout << endl;
+    } 
 }
 
 void Matrix::ValidateSum(Matrix *secondMatrix)
 {
     if (!HasSameDimensionOf(secondMatrix))
     {
-        throw ArithmeticException("To sum two matrices, their dimensions must be the same");
+        throw ArithmeticException("Error: To sum two matrices, their dimensions must be the same");
     }
 }
 
@@ -188,7 +216,7 @@ void Matrix::ValidateSubtraction(Matrix *secondMatrix)
 {
     if (!HasSameDimensionOf(secondMatrix))
     {
-        throw ArithmeticException("To subtract two matrices, their dimensions must be the same");
+        throw ArithmeticException("Error: To subtract two matrices, their dimensions must be the same");
     }
 }
 
@@ -202,6 +230,6 @@ void Matrix::ValidateMultiplication(Matrix *secondMatrix)
 {
     if (numberOfColumns != secondMatrix->numberOfRows)
     {
-        throw ArithmeticException("Invalid for matrix multiplication");
+        throw ArithmeticException("Error: Invalid for matrix multiplication");
     }
 }

@@ -1,32 +1,27 @@
 #include "iostream"
 #include "Matrix.h"
 
-using namespace std;
-
 int main()
 {
     try
     {
         Matrix *firstMatrix = new Matrix();
-        cout << "First Matrix: " << endl;
-        cout << "Insert the number of rows: " << endl;
-        cin >> firstMatrix->numberOfRows;
-        cout << "Insert the number of columns: " << endl;
-        cin >> firstMatrix->numberOfColumns;
+        firstMatrix->SetMatrixDimensions();    
 
-        firstMatrix->GenerateMatrix();
+        Matrix *secondMatrix = new Matrix();
+        secondMatrix->SetMatrixDimensions();
 
-        auto newMatrix = firstMatrix->GetTransposeMatrix();
+        firstMatrix->Plus(secondMatrix);          
 
-        newMatrix->Print();        
+        firstMatrix->DisplayMatrix();
     }
     catch(ArithmeticException ex)
     {
-       std::cerr << ex.what() << '\n';
+       std::cerr << ex.what() << endl;
     }
     catch (exception ex)
     {
-        std::cerr << ex.what() << '\n';
+        std::cerr << ex.what() << endl;
     }
     
     system("pause");

@@ -2,6 +2,9 @@
 #include "string.h"
 #include "CustomException.cpp"
 #include "vector" 
+#include <iomanip>
+
+using namespace std;
 
 const size_t MAXIMUM_DIMENSION = 20;
 
@@ -15,14 +18,15 @@ public:
     void Minus(Matrix* secondMatrix);
     void Times(float scalarElement);
     Matrix* Times(Matrix* secondMatrix);
-    void DividedBy(float scalarElement);
     int IsIdentityMatrix();
     Matrix GetInverseMatrix();
     Matrix* GetTransposeMatrix();
     void Print();
-    void GenerateMatrix(bool defaultValue = false);
+    void SetMatrixDimensions();
+    void DisplayMatrix();
 
 private:
+    void GenerateMatrix(bool defaultValue = false);
     void AddNewRow(std::vector<float> vec, size_t indexColumn);
     void ValidateSum(Matrix* secondMatrix);
     void ValidateSubtraction(Matrix* secondMatrix);
