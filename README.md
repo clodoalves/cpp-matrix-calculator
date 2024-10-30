@@ -10,6 +10,5 @@ So far, these operations are implemented:
 - Subtraction of two matrix
 - Multiplication of a matrix by a scalar element
 - Multiplication between two matrix
-- Division of a matrix by a scalar element
 - Transpose of a matrix
 
