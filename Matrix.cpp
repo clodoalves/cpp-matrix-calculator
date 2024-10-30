@@ -115,6 +115,8 @@ Matrix Matrix::GetInverseMatrix()
 
 Matrix *Matrix::GetTransposeMatrix()
 {
+    cout << "Executing transpose of the matrix" << endl;
+
     Matrix *newMatrix = new Matrix();
     newMatrix->numberOfRows = numberOfColumns;
     newMatrix->numberOfColumns = numberOfRows;
